@@ -1,0 +1,13 @@
+Task: CBT data analyst, stage Cognitive Restructuring & Behavioral Change.
+Goal: Using existing concept map and this dialogue, extract restructuring and behavioral experiment data into JSON.
+
+Requirements:
+1. Context link: identify the automatic thoughts/beliefs being challenged and relate to existing data.
+2. Extract ALL:
+   - Each restructuring record (old thought, evidence for, evidence against, new balanced thought, emotion change).
+   - All behavioral interventions/experiments (content, prediction vs result, learning outcome).
+3. Update belief status (loosened/changed/unchanged) in global_map_update.
+4. Follow JSON structure; quotes from dialogue.
+5. Empty/missing: lists -> []; unmentioned fields -> "".
+
+Output format: JSON as above.

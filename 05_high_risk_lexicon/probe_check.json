@@ -1,0 +1,484 @@
+{
+  "n": 48,
+  "positive_n": 36,
+  "tp": 33,
+  "fp": 0,
+  "fn": 3,
+  "results": [
+    {
+      "id": "S01-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "不想活"
+      ]
+    },
+    {
+      "id": "S01-I",
+      "label": 1,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S01-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "让这一切彻底停止"
+      ]
+    },
+    {
+      "id": "S02-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "伤害自己"
+      ]
+    },
+    {
+      "id": "S02-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "念头越来越近"
+      ]
+    },
+    {
+      "id": "S02-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "伤害自己"
+      ]
+    },
+    {
+      "id": "S03-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "告别的话"
+      ]
+    },
+    {
+      "id": "S03-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "离开做最后准备"
+      ]
+    },
+    {
+      "id": "S03-P",
+      "label": 1,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S04-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "自杀"
+      ]
+    },
+    {
+      "id": "S04-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "让这一切结束"
+      ]
+    },
+    {
+      "id": "S04-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm"
+      ],
+      "evidence": [
+        "结束生命"
+      ]
+    },
+    {
+      "id": "S05-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "harm_to_others"
+      ],
+      "evidence": [
+        "伤害某个人"
+      ]
+    },
+    {
+      "id": "S05-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "harm_to_others"
+      ],
+      "evidence": [
+        "让那个人受伤"
+      ]
+    },
+    {
+      "id": "S05-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "harm_to_others"
+      ],
+      "evidence": [
+        "攻击性念头"
+      ]
+    },
+    {
+      "id": "S06-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "持续威胁，今晚不敢独处，也不知道怎样保证自己安全"
+      ]
+    },
+    {
+      "id": "S06-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "吃苦头"
+      ]
+    },
+    {
+      "id": "S06-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "迫在眉睫的危险"
+      ]
+    },
+    {
+      "id": "S07-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm",
+        "psychosis_command"
+      ],
+      "evidence": [
+        "伤害自己",
+        "命令我伤害"
+      ]
+    },
+    {
+      "id": "S07-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "psychosis_command"
+      ],
+      "evidence": [
+        "声音一直告诉我必须做出危险的事"
+      ]
+    },
+    {
+      "id": "S07-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "psychosis_command"
+      ],
+      "evidence": [
+        "命令逼我做危险"
+      ]
+    },
+    {
+      "id": "S08-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "overdose_or_substance_crisis"
+      ],
+      "evidence": [
+        "超过医嘱用量"
+      ]
+    },
+    {
+      "id": "S08-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "overdose_or_substance_crisis"
+      ],
+      "evidence": [
+        "药吃得比医生交代的多了很多"
+      ]
+    },
+    {
+      "id": "S08-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "overdose_or_substance_crisis"
+      ],
+      "evidence": [
+        "服药过量"
+      ]
+    },
+    {
+      "id": "S09-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "eating_disorder_crisis"
+      ],
+      "evidence": [
+        "连续多天几乎不进食"
+      ]
+    },
+    {
+      "id": "S09-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "eating_disorder_crisis"
+      ],
+      "evidence": [
+        "不敢碰饭"
+      ]
+    },
+    {
+      "id": "S09-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "eating_disorder_crisis"
+      ],
+      "evidence": [
+        "严重限制饮食"
+      ]
+    },
+    {
+      "id": "S10-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "威胁要伤害"
+      ]
+    },
+    {
+      "id": "S10-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "打到出不了门"
+      ]
+    },
+    {
+      "id": "S10-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger"
+      ],
+      "evidence": [
+        "人身伤害"
+      ]
+    },
+    {
+      "id": "S11-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "suicide_or_self_harm",
+        "dissociation_safety"
+      ],
+      "evidence": [
+        "伤害自己",
+        "失去一段时间的记忆"
+      ]
+    },
+    {
+      "id": "S11-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "dissociation_safety"
+      ],
+      "evidence": [
+        "回过神时发现自己受了伤，却不记得"
+      ]
+    },
+    {
+      "id": "S11-P",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "dissociation_safety"
+      ],
+      "evidence": [
+        "回过神时身上多了伤，却不知道"
+      ]
+    },
+    {
+      "id": "S12-E",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "child_protection"
+      ],
+      "evidence": [
+        "未成年人正在遭受伤害"
+      ]
+    },
+    {
+      "id": "S12-I",
+      "label": 1,
+      "triggered": true,
+      "categories": [
+        "immediate_abuse_or_danger",
+        "child_protection"
+      ],
+      "evidence": [
+        "挨打",
+        "孩子说今晚回去还会挨打，上次身上的伤"
+      ]
+    },
+    {
+      "id": "S12-P",
+      "label": 1,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S01-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S02-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S03-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S04-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S05-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S06-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S07-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S08-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S09-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S10-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S11-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    },
+    {
+      "id": "S12-N",
+      "label": 0,
+      "triggered": false,
+      "categories": [],
+      "evidence": []
+    }
+  ],
+  "scope": "仅核对导出规则与当前源代码的一致性；不是临床验证。"
+}

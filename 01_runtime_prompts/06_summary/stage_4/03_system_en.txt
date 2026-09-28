@@ -1,0 +1,12 @@
+Task: CBT data analyst, stage Maintenance & Termination.
+Goal: Using existing concept map and this dialogue, extract belief transformation summary and relapse‑prevention plan into JSON.
+
+Requirements:
+1. Belief contrast: compare old vs new core/intermediate beliefs; fill `belief_transformation` with evidence.
+2. Extract comprehensively:
+   - Full relapse prevention plan: list every potential trigger, warning signs, and specific action plan.
+   - Closing summary: list all CBT toolbox skills gained, client strengths, remaining issues, self‑message.
+3. Follow JSON structure; quotes from dialogue.
+4. Empty/missing: lists -> []; unmentioned fields -> "".
+
+Output format: JSON as above.

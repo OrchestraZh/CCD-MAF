@@ -1,0 +1,9 @@
+{
+  "epoch": 2.996451279018187,
+  "global_step": 20265,
+  "max_steps": 27052,
+  "num_train_epochs": 4,
+  "train_batch_size": 4,
+  "best_metric": 0.9039803743362427,
+  "best_model_checkpoint": "output/technology_concept_recorder/checkpoint-20265"
+}

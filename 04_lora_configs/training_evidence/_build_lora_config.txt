@@ -1,0 +1,18 @@
+# Source: LLM/fine_tune.py:263
+def _build_lora_config(self, overrides: Optional[Dict] = None) -> LoraConfig:
+        """创建LoRA配置，支持外部覆盖参数"""
+        config_kwargs: Dict = {
+            "task_type": TaskType.CAUSAL_LM,
+            "r": 16,
+            "lora_alpha": 32,
+            "lora_dropout": 0.1,
+            "target_modules": [
+                "q_proj", "v_proj", "k_proj", "o_proj",
+                "gate_proj", "up_proj", "down_proj"
+            ],
+            "bias": "none",
+            "inference_mode": False,
+        }
+        if overrides:
+            config_kwargs.update(overrides)
+        return LoraConfig(**config_kwargs)

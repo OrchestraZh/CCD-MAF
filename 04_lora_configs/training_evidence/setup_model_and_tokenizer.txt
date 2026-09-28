@@ -1,0 +1,84 @@
+# Source: LLM/fine_tune.py:179
+def setup_model_and_tokenizer(self):
+        """设置模型和分词器"""
+        self._validate_local_model_path()
+
+        logger.info(f"加载模型和分词器: {self.model_path}")
+
+        # 设置加载参数
+        load_kwargs = {
+            'trust_remote_code': True,
+        }
+
+        if self.is_local_path or self.local_files_only:
+            load_kwargs['local_files_only'] = True
+
+        # 加载分词器
+        try:
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                self.model_path,
+                padding_side="right",
+                **load_kwargs
+            )
+            logger.info("分词器加载成功")
+        except Exception as e:
+            logger.error(f"分词器加载失败: {e}")
+            raise
+
+        # 设置pad token
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+            logger.info("设置pad_token为eos_token")
+
+        # 添加特殊标记
+        special_tokens = {
+            "additional_special_tokens": ["<|im_start|>", "<|im_end|>"]
+        }
+        num_added = self.tokenizer.add_special_tokens(special_tokens)
+        if num_added > 0:
+            logger.info(f"添加了 {num_added} 个特殊标记")
+
+        # 量化配置
+        quantization_config = None
+        if self.use_lora:
+            quantization_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4"
+            )
+
+        # 加载模型
+        try:
+            model_kwargs = {
+                'torch_dtype': torch.float16 if torch.cuda.is_available() else torch.float32,
+                **load_kwargs
+            }
+            if self._distributed_active and torch.cuda.is_available():
+                target_device = self._distributed_device_id()
+                model_kwargs['device_map'] = {"": target_device}
+                logger.info(f"以DDP模式加载模型到本地GPU: {target_device}")
+            else:
+                model_kwargs['device_map'] = "auto"
+
+            if quantization_config is not None:
+                model_kwargs['quantization_config'] = quantization_config
+
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_path,
+                **model_kwargs
+            )
+            logger.info("模型加载成功")
+
+            # 如果添加了新的token，需要resize embedding
+            if num_added > 0:
+                self.model.resize_token_embeddings(len(self.tokenizer))
+                logger.info(f"调整embedding大小到 {len(self.tokenizer)}")
+
+        except Exception as e:
+            logger.error(f"模型加载失败: {e}")
+            raise
+
+        # 配置LoRA的量化预处理（延迟创建具体LoRA头）
+        if self.use_lora and quantization_config is not None:
+            self.model = prepare_model_for_kbit_training(self.model)

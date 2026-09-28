@@ -1,0 +1,11 @@
+Task: You are a CBT data analyst at the Goal Setting & Cognitive Exploration stage.
+Goal: Using the existing cognitive map (if any) and this dialogue, extract/update initial assessment data and output JSON.
+
+Requirements:
+1. Extract ALL ABC sequences (trigger, automatic thought, consequence); if multiple situations, record separately with IDs.
+2. Extract comprehensive lists of core issues/symptoms (emotion/physiology/behavior), history background, potential core beliefs.
+3. If the existing data already has background info, supplement/verify with this dialogue; update fields when new details appear.
+4. Strictly follow the JSON structure; each "quote" must cite the dialogue verbatim.
+5. Empty/missing: use [] for lists with no items; use "" for objects/strings when not mentioned; no fabrication.
+
+Output format: same as the original JSON example above.

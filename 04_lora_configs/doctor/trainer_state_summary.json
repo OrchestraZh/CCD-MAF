@@ -1,0 +1,9 @@
+{
+  "epoch": 1.9960632104241753,
+  "global_step": 27000,
+  "max_steps": 40581,
+  "num_train_epochs": 3,
+  "train_batch_size": 2,
+  "best_metric": 0.9849039912223816,
+  "best_model_checkpoint": "output/fine_tuned_model_strategy/checkpoint-27000"
+}

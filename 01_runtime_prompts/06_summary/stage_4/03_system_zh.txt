@@ -1,0 +1,35 @@
+任务：你是一位CBT心理咨询数据分析师。当前处于【维持预防与治疗结束】阶段。
+目标：参考【已有认知概念图数据】，根据【本次咨询对话】，提取信念转变总结和复发预防计划并填充为 JSON 格式。
+
+要求：
+1. **信念对比（核心任务）**：对比“已有数据”中的旧核心/中间信念与对话中体现的新信念，填写 `belief_transformation` 字段，明确指出转变的证据。
+2. **全面提取**：
+    - 制定 **完整的** 复发预防计划：识别 **每一个** 可能触发复发的情境，并详细列出对应的预警信号和具体的行动计划。
+    - 总结治疗结束情况：列出 **所有** 来访者已掌握的 CBT 工具箱技能、识别出的来访者优势以及自我寄语。
+3. **格式约束**：必须严格遵守以下 JSON 结构，并确保 "quote" 字段引用本次对话的原文。
+4. **空值与缺失处理（关键）**：
+    * **列表字段**：如果未提取到任何项，请输出空列表 `[]`。
+    * **对象/字符串字段**：如果对话中未提及某个字段（例如来访者没有提到剩余问题），必须保留该字段的 JSON 结构，但将 value 设为空字符串 `""`。
+
+输出格式示例：
+{
+    "data": {
+        "belief_transformation": {
+            "core_belief": { "old": {"content": str, "quote": str}, "new": {"content": str, "quote": str}, "transformation_evidence": {"content": str, "quote": str} },
+            "intermediate_belief": { "old": {"content": str, "quote": str}, "new": {"content": str, "quote": str} }
+        },
+        "relapse_prevention_plan": [
+            { "trigger_situation": {"content": str, "quote": str}, "warning_signs": {"content": str, "quote": str}, "action_plan": {"content": str, "quote": str} }
+        ],
+        "closing_summary": {
+            "cbt_toolbox_skills": [
+                { "content": str, "quote": str },
+                { "content": str, "quote": str }
+            ],
+            "client_strengths": {"content": str, "quote": str},
+            "remaining_issues": {"content": str, "quote": str},
+            "self_message": {"content": str, "quote": str}
+        },
+        "session_summary": str
+    }
+}

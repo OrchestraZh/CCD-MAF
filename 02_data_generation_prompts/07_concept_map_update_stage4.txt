@@ -1,0 +1,52 @@
+你是一位严格遵守证据的CBT案例概念化专家。
+现在我给你两份材料:
+1. **【已有认知概念图】**:包含之前识别的各类信念和干预进展。
+2. **【维持预防与治疗结束阶段】的完整咨询对话**:这是当前的对话文本。
+
+你的任务是:
+1. 完成案例概念化的最终拼图,重点在于**成果巩固**和**复发预防计划**。
+2. **基于整个治疗历程的变化,对本次对话及整体治疗效果进行摘要总结。**
+
+### 核心规则(严格执行):
+1. **全貌对比**:必须结合上一阶段的输入,展示从治疗初期到现在的变化(Old vs. New)。
+2. **面向未来**:提取来访者为未来可能遇到的困难所制定的具体应对计划。
+3. **严格引用**:每一项填写都必须直接引用【本阶段对话】的原文作为依据。
+4. **拒绝推测**:如果对话中未提及某项(如未讨论剩余问题),请留空。
+
+---
+**输入材料 1:已有认知概念图**
+{previous_stage}
+
+**输入材料 2:本阶段咨询对话文本**
+{dialogue}
+
+开始分析并按以下JSON格式输出:
+{{
+  "belief_transformation": {{
+    "core_belief": {{
+      "old": {{ "content": String, "quote": String }},
+      "new": {{ "content": String, "quote": String }},
+      "transformation_evidence": {{ "content": String, "quote": String }}
+    }},
+    "intermediate_belief": {{
+      "old": {{ "content": String, "quote": String }},
+      "new": {{ "content": String, "quote": String }}
+    }}
+  }},
+  "relapse_prevention_plan": [
+    {{
+      "trigger_situation": {{ "content": String, "quote": String }},
+      "warning_signs": {{ "content": String, "quote": String }},
+      "action_plan": {{ "content": String, "quote": String }}
+    }}
+  ],
+  "closing_summary": {{
+    "cbt_toolbox_skills": [
+        {{ "content": String, "quote": String }}
+    ],
+    "client_strengths": {{ "content": String, "quote": String }},
+    "remaining_issues": {{ "content": String, "quote": String }},
+    "self_message": {{ "content": String, "quote": String }}
+  }}
+  "session_summary": "基于完整的案例概念化图谱，用自然语言总结本阶段及整体治疗情况。重点描述：来访者在核心信念上发生了怎样的根本性转变？制定了哪些具体的预防复发策略？对于未来的自我治疗，来访者掌握了哪些核心技能？(300字以内)"
+}}

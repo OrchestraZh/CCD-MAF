@@ -1,0 +1,55 @@
+{
+  "model_path": "Qwen2.5-7B-Instruct",
+  "instruction_config_file": "LLM/config.json",
+  "instructions_trained": 2,
+  "records": [
+    {
+      "instruction_name": "planner",
+      "adapter_name": "planner_lora",
+      "output_dir": "output/planner_concept_recorder",
+      "data_files": {
+        "train": "data copy/planner_data/cbt_dataset_noprev_full_combo.jsonl",
+        "validation": "data copy/planner_data/cbt_dataset_noprev_full.jsonl",
+        "test": null
+      },
+      "dataset_stats": {
+        "train": 6498,
+        "validation": 398
+      },
+      "lora_overrides": null,
+      "training_overrides": {
+        "learning_rate": 5e-05,
+        "per_device_train_batch_size": 4
+      },
+      "loss_tracking": {
+        "training_loss_csv": "output/planner_concept_recorder/training_loss_history.csv",
+        "evaluation_loss_csv": null
+      }
+    },
+    {
+      "instruction_name": "technology",
+      "adapter_name": "technology_lora",
+      "output_dir": "output/technology_concept_recorder",
+      "data_files": {
+        "train": "data copy/finetune1/train_new_cbt_technique_coach.jsonl",
+        "validation": "data copy/finetune1/val_new_cbt_technique_coach.jsonl",
+        "test": null
+      },
+      "dataset_stats": {
+        "train": 108211,
+        "validation": 13206
+      },
+      "lora_overrides": null,
+      "training_overrides": {
+        "learning_rate": 5e-05,
+        "per_device_train_batch_size": 4
+      },
+      "loss_tracking": {
+        "training_loss_csv": "output/technology_concept_recorder/training_loss_history.csv",
+        "evaluation_loss_csv": "output/technology_concept_recorder/evaluation_loss_history.csv"
+      }
+    }
+  ],
+  "timestamp": "2026-01-13T04:01:21.350128",
+  "log_file": "output/fine_tuned_model_dialogue/logs/training_20260106_173741.log"
+}

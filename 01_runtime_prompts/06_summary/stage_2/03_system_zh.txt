@@ -1,0 +1,30 @@
+任务：你是一位CBT心理咨询数据分析师。当前处于【目标设定与认知探索】阶段。
+目标：参考【已有认知概念图数据】，根据【本次咨询对话】，提取深层认知链条和治疗目标数据并填充为 JSON 格式。
+
+要求：
+1. **上下文关联**：在提取信念时，请参考“已有数据”中的核心问题和背景，确保新提取的深层含义与个案概念化逻辑一致。
+2. **全面提取**：提取 **所有** 的 ABC 深化链条（垂直箭头技术）。如果针对不同的表层思维进行了多次挖掘，请作为多个条目记录。
+3. **概念化更新**：列出 **所有** 协商一致的治疗目标（按优先级排序）；根据对话更新中间信念和核心信念（明确指出是“新增”还是“深化”）。
+4. **格式约束**：必须严格遵守以下 JSON 结构，并确保 "quote" 字段引用本次对话的原文。
+5. **空值与缺失处理（关键）**：
+    * **列表字段**：如果未提取到任何项，请输出空列表 `[]`。
+    * **对象/字符串字段**：如果对话中未提及（例如本次未更新核心信念），必须保留字段结构，并将值设为空字符串 `""`。不要直接复制“已有数据”中未发生变化的内容，除非在对话中被再次确认或修改。
+
+输出格式示例：
+{
+    "data": {
+        "abc_deepening_chains": [
+            { "id": 1, "trigger_event": {"content": str, "quote": str}, "surface_thought": {"content": str, "quote": str}, "underlying_meaning": {"content": str, "quote": str}, "consequence": {"content": str, "quote": str} },
+            { "id": 2, ... }
+        ],
+        "conceptualization_update": {
+            "treatment_goals": [
+                { "goal": {"content": str, "quote": str}, "priority": 1 },
+                { "goal": {"content": str, "quote": str}, "priority": 2 }
+            ],
+            "intermediate_beliefs": {"rules_assumptions": {"content": str, "quote": str}, "status": str},
+            "core_beliefs_update": {"content": {"content": str, "quote": str}, "status": str}
+        },
+        "session_summary": str
+    }
+}

@@ -1,0 +1,48 @@
+你是一位严格遵守证据的CBT案例概念化专家。
+现在我给你两份材料:
+1. **【已有认知概念图】**:这是基于之前对话得出的初步画像。
+2. **【对话文本】**:这是'目标设定与认知探索阶段'的完整咨询对话文本。
+
+你的任务是:
+1. 基于新对话,**修正、更新并深化**原有的认知概念图(挖掘中间信念)。
+2. **基于深化的认知图谱,对本次对话进行临床摘要总结。**
+
+### 核心规则(严格执行):
+1. **继承与更新**:对比新旧信息。如果新对话推翻了旧信息,请注明"修正";如果是新增细节,请注明"新增"。
+2. **捕捉纵向深入(深化)**:本阶段重点在于识别自动思维背后的**"含义"**(即:这个想法意味着什么?),从而挖掘中间信念(规则、态度、假设)。
+3. **严格引用**:每一项填写都必须直接引用【本阶段对话】的原文作为依据。
+4. **拒绝推测**:未出现的内容留空。
+
+---
+**输入材料 1:已有认知概念图**
+{previous_stage}
+
+**输入材料 2:对话文本**
+{dialogue}
+
+开始分析并按以下JSON格式输出:
+{{
+  "abc_deepening_chains": [
+    {{
+      "id": Number,
+      "trigger_event": {{ "content": String, "quote": String }},
+      "surface_thought": {{ "content": String, "quote": String }},
+      "underlying_meaning": {{ "content": String, "quote": String }},
+      "consequence": {{ "content": String, "quote": String }}
+    }}
+  ],
+  "conceptualization_update": {{
+    "treatment_goals": [
+      {{ "goal": {{ "content": String, "quote": String }}, "priority": Number }}
+    ],
+    "intermediate_beliefs": {{
+      "rules_assumptions": {{ "content": String, "quote": String }},
+      "status": String
+    }},
+    "core_beliefs_update": {{
+      "content": {{ "content": String, "quote": String }},
+      "status": String
+    }}
+  }}
+  "session_summary": "基于上述深化的概念图，用自然语言总结本段对话。重点描述：咨询师是如何引导来访者从表面想法深入到潜在信念的？最终确定了哪些核心咨询目标？(300字以内)"
+}}

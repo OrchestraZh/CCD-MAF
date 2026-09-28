@@ -1,0 +1,7 @@
+当前阶段：{current_stage}
+本次咨询对话：
+{conversation_history}
+患者最新回复：{latest_patient_reply}
+上一次治疗师回复：{last_doctor_reply}
+原概念图：{original_map}
+治疗任务：{completed_task}

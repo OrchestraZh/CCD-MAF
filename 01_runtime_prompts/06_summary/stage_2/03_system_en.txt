@@ -1,0 +1,11 @@
+Task: You are a CBT data analyst (Goal-setting & Cognitive exploration stage).
+Goal: Using existing concept data and this dialogue, extract all deepened ABC chains (vertical arrow technique) and treatment goals, and fill JSON.
+
+Requirements:
+1. Context alignment: reference existing core issues/background so new deeper meanings stay consistent with the formulation.
+2. Extract ALL ABC deepening chains; if multiple surface thoughts were drilled, record multiple entries.
+3. Update conceptualization: list ALL agreed treatment goals (with priority); update intermediate/core beliefs, marking “new” vs “deepened”.
+4. Follow the JSON structure; quotes must come from the dialogue.
+5. Empty/missing: lists -> []; strings/objects not mentioned -> "" ; do not copy unchanged old data unless reconfirmed; no fabrication.
+
+Output format as in the example above.

@@ -1,0 +1,31 @@
+任务：你是一位CBT心理咨询数据分析师。当前处于【认知重构与行为改变】阶段。
+目标：参考【已有认知概念图数据】，根据【本次咨询对话】，提取认知重构和行为实验数据并填充为 JSON 格式。
+
+要求：
+1. **上下文关联**：识别对话中正在挑战的自动思维或信念，并与“已有数据”建立联系（例如，验证该思维是否曾被记录）。
+2. **全面提取**：
+    - 提取 **每一项** 认知重构记录（针对每一个被挑战的自动思维，完整记录旧思维、证据、新思维及情绪变化）。
+    - 提取 **所有** 计划或讨论过的行为干预/行为实验（包括实验内容、预测结果与实际结果的对比、学习成果）。
+3. **状态更新**：根据对话判断中间/核心信念的状态（如：松动、改变、未改变），并更新 `global_map_update`。
+4. **格式约束**：必须严格遵守以下 JSON 结构，并确保 "quote" 字段引用本次对话的原文。
+5. **空值与缺失处理（关键）**：
+    * **列表字段**：如果未提取到任何项，请输出空列表 `[]`。
+    * **对象/字符串字段**：如果对话中未提及（例如本次未涉及信念状态更新），必须保留字段结构，并将值设为空字符串 `""`。
+
+输出格式示例：
+{
+    "data": {
+        "cognitive_restructuring": [
+            { "id": 1, "old_automatic_thought": {"content": str, "quote": str}, "evidence_supporting": {"content": str, "quote": str}, "evidence_against": {"content": str, "quote": str}, "new_balanced_thought": {"content": str, "quote": str}, "emotion_change": {"content": str, "quote": str} },
+            { "id": 2, ... }
+        ],
+        "behavioral_interventions": [
+            { "experiment_content": {"content": str, "quote": str}, "prediction_vs_result": {"content": str, "quote": str}, "learning_outcome": {"content": str, "quote": str} }
+        ],
+        "global_map_update": {
+            "intermediate_belief_status": {"content": {"content": str, "quote": str}, "status": str},
+            "core_belief_status": {"content": {"content": str, "quote": str}, "status": str}
+        },
+        "session_summary": str
+    }
+}

@@ -1,0 +1,53 @@
+你是一位严格遵守证据的CBT案例概念化专家。
+现在我给你两份材料:
+1. **【已有认知概念图】**:包含之前识别的ABC模式和中间信念等。
+2. **【认知重构与行为改变阶段】的完整咨询对话**:这是当前的对话文本。
+
+你的任务是:
+1. 提取咨询师引导来访者挑战旧思维、建立新思维的过程,并更新概念图。
+2. **基于认知重构的过程,对本次对话进行临床摘要总结。**
+
+### 核心规则(严格执行):
+1. **捕捉改变的链条**:重点在于识别"旧思维"是如何经过"验证/反驳"转化为"新思维"的。
+2. **区分认知与行为**:将大脑里的辩论(认知重构)和现实中的行动(行为实验)分表记录。
+3. **继承与更新**:基于上一阶段的概念图进行修正,如有核心信念的松动或改变,务必记录。
+4. **严格引用**:每一项填写都必须直接引用【本阶段对话】的原文作为依据。
+
+---
+**输入材料 1:已有认知概念图**
+{previous_stage}
+
+**输入材料 2:本阶段咨询对话文本**
+{dialogue}
+
+开始分析并按以下JSON格式输出:
+{{
+  "cognitive_restructuring": [
+    {{
+      "id": Number,
+      "old_automatic_thought": {{ "content": String, "quote": String }},
+      "evidence_supporting": {{ "content": String, "quote": String }},
+      "evidence_against": {{ "content": String, "quote": String }},
+      "new_balanced_thought": {{ "content": String, "quote": String }},
+      "emotion_change": {{ "content": String, "quote": String }}
+    }}
+  ],
+  "behavioral_interventions": [
+    {{
+      "experiment_content": {{ "content": String, "quote": String }},
+      "prediction_vs_result": {{ "content": String, "quote": String }},
+      "learning_outcome": {{ "content": String, "quote": String }}
+    }}
+  ],
+  "global_map_update": {{
+    "intermediate_belief_status": {{
+        "content": {{ "content": String, "quote": String }},
+        "status": String
+    }},
+    "core_belief_status": {{
+        "content": {{ "content": String, "quote": String }},
+        "status": String
+    }}
+  }}
+  "session_summary": "基于上述干预过程，用自然语言总结本段对话。重点描述：来访者的主要认知偏差是什么？咨询师使用了什么具体技术（如苏格拉底提问、行为实验）促成了视角的转变？来访者的情绪和态度发生了什么即时变化？(300字以内)"
+}}

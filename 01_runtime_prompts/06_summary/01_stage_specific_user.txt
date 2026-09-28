@@ -1,0 +1,4 @@
+【已有认知概念图数据】：
+{original_map}
+【本次历史对话】：
+{history_delta}

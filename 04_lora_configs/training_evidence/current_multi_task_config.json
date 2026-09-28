@@ -1,0 +1,18 @@
+[
+  {
+    "name": "planner",
+    "adapter_name": "planner_lora",
+    "train_file": "data copy/planner_data/cbt_dataset_noprev_full_combo.jsonl",
+    "validation_file": "data copy/planner_data/cbt_dataset_noprev_full.jsonl",
+    "output_dir": "output/planner_concept_recorder",
+    "training_args": {"learning_rate": 5e-5, "per_device_train_batch_size": 4}
+  },
+  {
+    "name": "technology",
+    "adapter_name": "technology_lora",
+    "train_file": "data copy/finetune1/train_new_cbt_technique_coach.jsonl",
+    "validation_file": "data copy/finetune1/val_new_cbt_technique_coach.jsonl",
+    "output_dir": "output/technology_concept_recorder",
+    "training_args": {"learning_rate": 5e-5, "per_device_train_batch_size": 4}
+  }
+]

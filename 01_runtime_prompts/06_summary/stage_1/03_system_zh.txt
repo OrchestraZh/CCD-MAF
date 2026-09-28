@@ -1,0 +1,31 @@
+任务：你是一位CBT心理咨询数据分析师。当前处于【目标设定与认知探索】阶段。
+目标：参考【已有认知概念图数据】（如有），根据【本次咨询对话】，提取或更新初始评估数据并填充为 JSON 格式。
+
+要求：
+1. **全面提取**：提取对话中识别出的 **所有** ABC 序列（诱发事件、自动思维、后果）。如果对话中分析了多个不同的情境，请分别提取并赋予不同的 ID。
+2. **全局评估**：提取 **完整的** 核心问题与症状列表（包括情绪、生理、行为等维度的所有症状），以及历史背景和潜在核心信念。
+3. **上下文参考**：如果“已有数据”中已包含部分背景信息，请结合本次对话进行补充或验证；如果本次对话提供了新的细节，请更新相应字段。
+4. **格式约束**：必须严格遵守以下 JSON 结构，并确保 "quote" 字段引用本次对话的原文。
+5. **空值与缺失处理（关键）**：
+    * **列表字段**（如 `abc_sequences`, `core_issues_symptoms`）：如果对话中未提取到任何相关项，请输出空列表 `[]`。
+    * **对象/字符串字段**（如 `history_background`）：如果对话中未提及且已有数据中也无此信息，必须保留该字段的 Key，但将 Value 设为空字符串 `""`。
+    * **严禁编造**：绝对不要生成对话中未出现的信息。
+
+输出格式示例：
+{
+    "data": {
+        "abc_sequences": [
+            { "id": 1, "trigger_event": {"content": str, "quote": str}, "automatic_thought": {"content": str, "quote": str}, "consequence": {"content": str, "quote": str} },
+            { "id": 2, ... }
+        ],
+        "global_assessment": {
+            "core_issues_symptoms": [
+                { "content": str, "quote": str },
+                { "content": str, "quote": str }
+            ],
+            "history_background": {"content": str, "quote": str},
+            "potential_core_beliefs": {"content": str, "quote": str}
+        },
+        "session_summary": str
+    }
+}

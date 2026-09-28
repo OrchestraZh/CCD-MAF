@@ -1,0 +1,83 @@
+# Source: LLM/fine_tune.py:334
+def train(
+        self,
+        dataset: DatasetDict,
+        output_dir: str = "./fine_tuned_model",
+        adapter_name: Optional[str] = None,
+        lora_overrides: Optional[Dict] = None,
+        training_args_overrides: Optional[Dict] = None,
+    ):
+        """开始微调训练"""
+        if self.model is None or self.tokenizer is None:
+            self.setup_model_and_tokenizer()
+
+        os.makedirs(output_dir, exist_ok=True)
+        self.model.train()
+        if self._distributed_active:
+            logger.info(f"DDP训练启用 (world_size={self.world_size}, local_rank={self.local_rank})")
+
+        current_adapter = adapter_name or "default"
+        if self.use_lora:
+            self._ensure_lora_adapter(current_adapter, overrides=lora_overrides)
+            logger.info(f"当前LoRA适配器: {self.active_adapter_name}")
+
+        # 使用DataCollatorForSeq2Seq，正确处理label masking
+        data_collator = DataCollatorForSeq2Seq(
+            tokenizer=self.tokenizer,
+            model=self.model,
+            label_pad_token_id=-100,
+            padding="longest",
+            max_length=None,
+        )
+
+        eval_split_name = None
+        if "validation" in dataset:
+            eval_split_name = "validation"
+        elif "test" in dataset:
+            eval_split_name = "test"
+
+        eval_dataset = dataset.get(eval_split_name) if eval_split_name else None
+        has_eval = eval_dataset is not None
+        if has_eval:
+            eval_label = "验证集" if eval_split_name == "validation" else "测试集"
+            logger.info(f"{eval_label}用于评估，样本数: {len(eval_dataset)}")
+
+        # 训练参数
+        training_args_dict = {
+            "output_dir": output_dir,
+            "overwrite_output_dir": True,
+            "num_train_epochs": 4,
+            "per_device_train_batch_size": 2,
+            "per_device_eval_batch_size": 2,
+            "gradient_accumulation_steps": 4,
+            "dataloader_num_workers": 0,
+            "warmup_steps": 100,
+            "learning_rate": 5e-6,
+            "fp16": torch.cuda.is_available(),
+            "logging_steps": 10,
+            "eval_strategy": "steps" if has_eval else "no",
+            "eval_steps": 6755 if has_eval else None,
+            "save_strategy": "steps",
+            "save_steps": 6755,
+            "save_total_limit": 4,
+            "load_best_model_at_end": True if has_eval else False,
+            "metric_for_best_model": "eval_loss" if has_eval else None,
+            "greater_is_better": False,
+            "remove_unused_columns": False,
+            "dataloader_pin_memory": False,
+            "gradient_checkpointing": True,
+            "gradient_checkpointing_kwargs": {"use_reentrant": False},
+            "dataloader_drop_last": True,
+            "report_to": None,
+            "logging_dir": os.path.join(output_dir, "logs"),
+            "logging_first_step": True,
+        }
+        if self._distributed_active:
+            training_args_dict.update({
+                "ddp_find_unused_parameters": False,
+                "ddp_backend": "nccl",
+                "log_on_each_node": False,
+            })
+        if training_args_overrides:
+            training_args_dict.update(training_args_overrides)
+        
